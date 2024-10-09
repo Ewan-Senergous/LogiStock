@@ -5,6 +5,12 @@ CREATE TABLE category (
   FOREIGN KEY (parent_id) REFERENCES Category(id) ON DELETE CASCADE
 );
 
+INSERT INTO category (name, parent_id) VALUES ('Rayonnage', NULL);
+INSERT INTO category (name, parent_id) VALUES ('Rayonnage léger', 1); 
+INSERT INTO category (name, parent_id) VALUES ('Manutention', NULL);
+INSERT INTO category (name, parent_id) VALUES ('Transpalette', 3); 
+
+
 CREATE TABLE customer (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
