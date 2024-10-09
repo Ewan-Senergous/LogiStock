@@ -8,7 +8,6 @@ CREATE TABLE category (
 INSERT INTO category (name, parent_id) VALUES ('Rayonnage', NULL);
 INSERT INTO category (name, parent_id) VALUES ('Rayonnage léger', 1); 
 INSERT INTO category (name, parent_id) VALUES ('Manutention', NULL);
-INSERT INTO category (name, parent_id) VALUES ('Transpalette', 3); 
 
 
 CREATE TABLE customer (
