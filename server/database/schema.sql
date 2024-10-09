@@ -55,8 +55,8 @@ CREATE TABLE orders (
   total_price DECIMAL(10, 2),
   purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (customer_id) REFERENCES customer(id) ON DELETE CASCADE,
-  FOREIGN KEY (delivery_id) REFERENCES delivery(id) ON DELETE SET NULL,
-  FOREIGN KEY (payment_id) REFERENCES payment(id) ON DELETE SET NULL
+  FOREIGN KEY (delivery_id) REFERENCES delivery(id),
+  FOREIGN KEY (payment_id) REFERENCES payment(id)
 );
 
 CREATE TABLE order_product (
