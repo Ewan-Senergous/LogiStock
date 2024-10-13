@@ -53,7 +53,7 @@ const edit = async (req, res, next) => {
   try {
     const updated = await tables.product.update({
       id: productId,
-      categoryId,
+      category_id: categoryId,
       title,
       description,
       price,
