@@ -19,13 +19,13 @@ CREATE TABLE customer (
   fullname VARCHAR(255) NOT NULL UNIQUE,
   email VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
-  phone_number VARCHAR(20),
+  phoneNumber VARCHAR(20),
   role ENUM('customer', 'admin') NOT NULL DEFAULT 'customer',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO customer (username, fullname, email, password, phone_number, role) VALUES 
+INSERT INTO customer (username, fullname, email, password, phoneNumber, role) VALUES 
 ('john_doe', 'John Doe', 'JohnDoe@gmail.com', '12345', '0123456789', 'admin'),
 ('jane_smith', 'Jane Smith', 'JaneSmith@gmail.com', '123456', '0987654321', 'customer');
 
