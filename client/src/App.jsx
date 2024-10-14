@@ -7,8 +7,8 @@ export default function App() {
   return (
     <main>
       <Navbar />
-      <Footer />
       <Outlet />
+      <Footer />
     </main>
   );
 }
