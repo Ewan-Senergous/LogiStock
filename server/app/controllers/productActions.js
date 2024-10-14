@@ -23,7 +23,7 @@ const read = async (req, res, next) => {
 };
 
 const add = async (req, res, next) => {
-  const { categoryId, title, description, price, stock, image } = req.body;
+  const { categoryId, title, description, price, stock, filename } = req.body;
 
   if (!categoryId || !title || !price || !stock) {
     return res
@@ -38,7 +38,7 @@ const add = async (req, res, next) => {
       description,
       price,
       stock,
-      image: image || "stock_epuise.jpg",
+      image_url: filename || "stock_epuise.jpg",
     });
     return res.status(201).json({ insertId });
   } catch (err) {
@@ -47,27 +47,42 @@ const add = async (req, res, next) => {
 };
 
 const edit = async (req, res, next) => {
-  const { categoryId, title, description, price, stock, image } = req.body;
+  const { categoryId, title, description, price, stock, filename } = req.body; // Assurez-vous que categoryId est bien pris ici
   const productId = req.params.id;
 
+  // Vérification que tous les champs obligatoires sont présents
+  if (!categoryId || !title || !description || !price || !stock) {
+    return res
+      .status(400)
+      .json({ error: "Les champs obligatoires sont manquants." });
+  }
+
   try {
+    const existingProduct = await tables.product.read(productId);
+
+    if (!existingProduct) {
+      return res.status(404).json({ error: "Produit non trouvé" });
+    }
+
+    // Mise à jour du produit avec les nouvelles valeurs
     const updated = await tables.product.update({
       id: productId,
-      category_id: categoryId,
+      category_id: categoryId, // Assurez-vous que category_id est bien défini
       title,
       description,
       price,
       stock,
-      image,
+      image_url: filename || existingProduct.image_url || "stock_epuise.jpg", // Gérer l'image
     });
 
     if (updated) {
-      res.sendStatus(204);
-    } else {
-      res.sendStatus(404);
+      return res.sendStatus(204); // Succès sans contenu
     }
+    return res
+      .status(500)
+      .json({ error: "Erreur lors de la mise à jour du produit." });
   } catch (err) {
-    next(err);
+    return next(err); // Gestion des erreurs
   }
 };
 

@@ -21,7 +21,7 @@ nav img {
 }
 
 .logo {
-  width: 5rem;
+  width: 8rem;
 }
 
 nav > section {
@@ -117,5 +117,9 @@ nav > section > span {
 
   nav .menu > button:has(img) {
     display: none;
+  }
+
+  .logo {
+    width: 10rem;
   }
 }

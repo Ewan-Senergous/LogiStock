@@ -4,9 +4,13 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
+import Home from "./pages/Home";
+import ProductDetails from "./pages/ProductDetails";
+
+import homeLoader from "./services/loader/homeLoader";
+import productDetailsLoader from "./services/loader/productDetailsLoader";
 
 import "./styles/main.css";
-import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +19,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: homeLoader,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetails />,
+        loader: productDetailsLoader,
       },
     ],
   },

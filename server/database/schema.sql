@@ -33,22 +33,22 @@ CREATE TABLE product (
   description TEXT NOT NULL,
   price DECIMAL(10, 2) NOT NULL,
   stock INT NOT NULL,
-  image VARCHAR(255) NOT NULL DEFAULT 'stock_epuise.jpg',
+  image_url VARCHAR(255) NOT NULL DEFAULT 'stock_epuise.jpg',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE
 );
 
-INSERT INTO product (category_id, title, description, price, stock, image) VALUES 
+INSERT INTO product (category_id, title, description, price, stock, image_url) VALUES 
 (2, 'Transpalette manuel', 'Transpalette manuel avec levée facile', 400.00, 20, 'transpalette-manuel.jpg'),  -- id 1 
 (2, 'Transpalette électrique', 'Transpalette électrique pour faciliter le déplacement des charges lourdes', 3500.00, 10, 'transpalette-electrique.jpg'),  -- id 2
 (2, 'Transpalette électrique peseur', 'Transpalette électrique peseur pour peser des charges lourdes', 4599.00, 15, 'transpalette-electrique-peseur.jpg');  -- id 3
 
-INSERT INTO product (category_id, title, description, price, stock, image) VALUES
+INSERT INTO product (category_id, title, description, price, stock, image_url) VALUES
 (3, 'Gerbeur électrique', 'Gerbeur compact et puissant pour charges lourdes', 10000.00, 13, 'gerbeur-electrique.jpg'),  -- id 4
 (3, 'Gerbeur électrique autoporté', 'Gerbeur puissant et mobile pour se déplacer rapidement', 8000.00, 8, 'gerbeur-electrique-autoporte.jpg');  -- id 5
 
-INSERT INTO product (category_id, title, description, price, stock, image) VALUES
+INSERT INTO product (category_id, title, description, price, stock, image_url) VALUES
 (4, 'Chariot élévateur Caces 3', 'Chariot puissant et flexible parfait pour le travail en extérieur', 25000.00, 5, 'chariot-elevateur-Caces_3.jpg'), -- id 6
 (4, 'Chariot à mat rétractable Caces 5', 'Chariot compact pour soulever des charges lourdes en hauteur', 35630.00, 5, 'chariot-a-mat-retractable-Caces_5.jpg');  -- id 7
 

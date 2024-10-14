@@ -7,14 +7,14 @@ class ProductRepository extends AbstractRepository {
 
   async create(product) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (category_id, title, description, price, stock, image) VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (category_id, title, description, price, stock, image_url) VALUES (?, ?, ?, ?, ?, ?)`,
       [
         product.category_id || null,
         product.title,
         product.description,
         product.price,
         product.stock,
-        product.image,
+        product.image_url || null,
       ]
     );
     return result.insertId;
@@ -35,14 +35,14 @@ class ProductRepository extends AbstractRepository {
 
   async update(product) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET category_id = ?, title = ?, description = ?, price = ?, stock = ?, image = ? WHERE id = ?`,
+      `UPDATE ${this.table} SET category_id = ?, title = ?, description = ?, price = ?, stock = ?, image_url = ? WHERE id = ?`,
       [
-        product.category_id || null,
+        product.category_id,
         product.title,
         product.description,
         product.price,
         product.stock,
-        product.image,
+        product.image_url || null,
         product.id,
       ]
     );
