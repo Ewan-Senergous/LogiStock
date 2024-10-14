@@ -11,7 +11,7 @@ export default function Navbar() {
           <Link to="/manutention">Manutention</Link>
         </section>
         <Link to="/">
-          <img src={Logo} alt="Miam" className="logo" />
+          <img src={Logo} alt="Caces 3" className="logo" />
         </Link>
         <MenuBurger />
         <section>
